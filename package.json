@@ -1,0 +1,30 @@
+{
+  "name": "poc-frontend-new-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "prebuild:ssr": "rm -rf dist-ssr",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "fix-imports": "node build-tools/fix-import-issues.js",
+    "copy-css": "cp ./src/*.css ./dist-ssr",
+    "copy-assets": "cp -r ./src/assets ./dist-ssr",
+    "build:ssr": "yarn tsc -p tsconfig.server.json && yarn fix-imports && yarn copy-css && yarn copy-assets",
+    "build:ssr-watch": "nodemon -w src --exec yarn build:ssr"
+  },
+  "dependencies": {
+    "hypernova": "^2.5.0",
+    "hypernova-react": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}
